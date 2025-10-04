@@ -1,0 +1,30 @@
+name: MLflow CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Setup Miniconda
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        activate-environment: eksperimen_sml_env
+        environment-file: conda.yaml
+        python-version: 3.11
+
+    - name: Install Dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run Training with MLflow
+      run: |
+        mlflow run . -P n_estimators=200 -P max_depth=5 -P learning_rate=0.1
