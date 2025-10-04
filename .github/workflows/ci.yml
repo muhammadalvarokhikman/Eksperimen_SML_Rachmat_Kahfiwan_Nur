@@ -20,7 +20,7 @@ jobs:
       uses: conda-incubator/setup-miniconda@v2
       with:
         activate-environment: eksperimen_sml_env
-        environment-file: membangun_model/conda.yaml
+        environment-file: Workflow-CI/conda.yaml
         python-version: 3.11
         auto-activate-base: false
 
