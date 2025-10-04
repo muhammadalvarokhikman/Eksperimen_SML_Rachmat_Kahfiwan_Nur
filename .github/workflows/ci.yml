@@ -32,4 +32,4 @@ jobs:
     # 4. Run Training pakai MLflow Project
     - name: Run MLflow Project
       run: |
-        mlflow run Workflow-CI . -P n_estimators=200 -P max_depth=5 -P learning_rate=0.1
+        mlflow run Workflow-CI -P n_estimators=200 -P max_depth=5 -P learning_rate=0.1
